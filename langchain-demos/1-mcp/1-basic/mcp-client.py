@@ -218,4 +218,4 @@ if __name__ == "__main__":
     asyncio.run(main())
 
 # run
-# uv run client.py server.py
+# uv run mcp-client.py mcp-server.py

@@ -55,9 +55,9 @@ if __name__ == "__main__":
 
 # 启动
 # npx -y @modelcontextprotocol/inspector uv run server.py
-# mcp dev server.py
+# mcp dev mcp-server.py
 # cherry studio参数配置
 # --directory
 # D:\PycharmProjects\LangChainDemo # 替换为实际项目路径
 # run
-# server.py
+# mcp-server.py

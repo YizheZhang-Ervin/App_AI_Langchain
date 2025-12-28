@@ -2,7 +2,8 @@
 
 - mcp
     - basic
-    - sse-streamablehttp
+    - sse
+    - streamablehttp
     - open-webui接入mcp
 - rag
     - embedding

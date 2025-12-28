@@ -11,7 +11,7 @@ dotenv.load_dotenv()
 mcp = FastMCP("WeatherServerSSE", host="0.0.0.0", port=8000)
 
 @mcp.tool()
-def get_weather(city: str) -> dict | None:
+async def get_weather(city: str) -> dict | None:
     """
     查询指定城市的即时天气信息。
     参数 city: 城市英文名，如 Beijing

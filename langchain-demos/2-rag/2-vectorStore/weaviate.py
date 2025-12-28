@@ -44,7 +44,7 @@ uuid = database.data.insert(
 # 生成5条数据
 data_rows = [{"title": f"标题{i + 1}"} for i in range(5)]
 # 生成5个对应的向量数据
-vectors = [[0.1] * 1536for i in range(5)]
+vectors = [[0.1] * 1536 for i in range(5)]
 # 集合对象
 collection = client.collections.get("Database")
 # 批处理大小为200
