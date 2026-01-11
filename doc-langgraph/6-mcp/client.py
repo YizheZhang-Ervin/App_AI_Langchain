@@ -65,6 +65,8 @@ async def run_chat_loop() -> None:
     # """
 
     # 用天气助手MCP工具的提示词
+    # agent封装为mcp的提示词
+    # 配置使用mcp.json
     prompt = """
     你是一个智能体，当用户需要查询天气时，可以调用chatbot工具此时请创建如下格式消息进行调用：{"type": "human", "content": user_input}
     请根据用户的自然语言请求，判断是否需要调用函数，并严格按照函数输入格式返回调用指令。

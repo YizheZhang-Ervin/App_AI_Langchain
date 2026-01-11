@@ -1,6 +1,6 @@
 # langhcain
 
-## Usage
+## Python
 ```sh
 # 国内源
 pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
@@ -11,9 +11,12 @@ cd xxenv/Scripts
 activate
 deactivate
 
-# install
+# dependencies
 pip install -U "langgraph-cli[inmem]"
+```
 
+## Project
+```sh
 # create
 langgraph new path/to/your/app --template new-langgraph-project-python
 cd path/to/your/app
@@ -34,19 +37,21 @@ langgraph dev --debug-port 5678
 # https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024
 ```
 
+## 迁移环境
+```sh
+# 联网机器下载依赖
+pip freeze > requirements.txt
+pip download -r requirements.txt -d ./python_packages
+
+# 离线机器安装
+python -m venv ./xxenv
+cd xxenv/Scripts
+activate
+pip install --no-index --find-links=./python_packages -r requirements.txt
+```
+
 ## TODO
 ```sh
-1. langchain
-- 博客：整理 + 单独rag和mcp (OK)
-- 官方：new
-
-2. langgraph
-- 博客：整理
-- 官方：整理
-
-3. DeepAgents
-- 官方：new (OK)
-
-4. 完整例子
+# 完整例子
 - gradio + ollama + langgraph + 多agent + mcp + rag + memory + HIL
 ```

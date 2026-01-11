@@ -121,6 +121,10 @@ llm = ChatOllama()
 agent = create_tool_calling_agent(llm, tools, prompt)
 agent_executor = AgentExecutor(agent, tools)
 agent_executor.invoke(command)
+
+# agent
+agent = create_agent()
+agent.invoke()
 ```
 
 ### 1.9 Mcp
@@ -310,37 +314,92 @@ client.invoke({})
 ## 2. LangGraph
 ### 2.1 agent tool
 ```py
-
+llm = ChatOllama()
+tools = []
+agent = create_react_agent(model=llm, tools=tools)
+response = agent.invoke()
 ```
 
 ### 2.2 ecology 
 ```py
-
+/
 ```
 
 ### 2.3 graph
 ```py
+graph = StateGraph()
+graph.add_node()
+graph.add_conditional_edges()
+graph.add_edge()
+checkpointer=InMemorySaver()
+store = InMemoryStore()
+app = graph.compile(checkpointer=checkpointer，store=store)
+app.invoke()
+display(Image(app.get_graph().draw_mermaid_png()))
+app.get_graph().draw_png('./graph.png')
+app.get_graph().print_ascii()
 
+# pydantic(继承BaseModel)
+state = BaseModel(xx)
+app.invoke(state)
 ```
 
 ### 2.4 HIL
 ```py
+snapshot = graph.get_state()
+if snapshot.next:
+    print("工具调用需要人工确认")
 
+# time travel
+states = list(graph.get_state_history(config))
+new_config = graph.update_state(
+    states[1].config,
+    values={}
+)
+response2 = graph.invoke(None, config=new_config)
 ```
 
 ### 2.5 memory
 ```py
+# summarize msg
+summarization_node = SummarizationNode()
+checkpointer = InMemorySaver()
+agent = create_react_agent(
+    model=model,
+    tools=tools,
+    pre_model_hook=summarization_node,
+    state_schema=State,
+    checkpointer=checkpointer
+)
 
+# trim msg (pre_model_hook里调用trim_messages)
+trimmed_messages = trim_messages()
+agent = create_react_agent(
+    model,
+    tools,
+    pre_model_hook=pre_model_hook,
+    checkpointer=checkpointer,
+)
 ```
 
 ### 2.6 mcp
 ```py
+# client
+mcp_client = MultiServerMCPClient()
+tools = await mcp_client.get_tools()
+llm = ChatOllama()
+checkpointer = InMemorySaver()
+agent = create_react_agent(model=llm, prompt=prompt, tools=tools, checkpointer=checkpointer)
 
+# server
+mcp = FastMCP()
+# 方法用@mcp.tool()
 ```
 
 ### 2.7 multiagent
 ```py
-
+state.phase
+state.type
 ```
 
 ## 3. DeepAgents(暂无)
